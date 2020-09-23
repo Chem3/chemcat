@@ -54,7 +54,7 @@ class Persons(models.Model):
     person_id = models.AutoField(primary_key=True)
     
     def __str__(self):
-        return self.firstname
+        return self.firstname + " " + self.lastname
     
     class Meta:
         db_table = 'persons'
@@ -110,7 +110,7 @@ class Chemicals(models.Model):
     chemical_id = models.AutoField(primary_key=True)
    
     def __str__(self):
-        return self.trivial_name
+        return self.trivial_name #+ " | " + self.iupac_name
     
     class Meta:
         db_table = 'chemicals'
@@ -125,7 +125,7 @@ class Shelves(models.Model):
     shelf_id = models.AutoField(primary_key=True)
     
     def __str__(self):
-        return self.longname
+        return self.shortname
     
     class Meta:
         db_table = 'shelves'
@@ -147,7 +147,7 @@ class Bottles(models.Model):
     producer = models.ForeignKey('Producers', models.PROTECT, blank=True, null=True)
     
     def __str__(self):
-        return self.product_name
+        return self.product_name#+ " | "+self.chemical.iupac_name
     
     class Meta:
         db_table = 'bottles'

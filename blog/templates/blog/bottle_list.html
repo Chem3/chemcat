@@ -1,0 +1,13 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+	<table>
+		{% for bottle in bottles %}
+		<tr>
+			<td>{{ bottle.product_name}}</td>
+			<td>{{ bottle.barcode}}</td>
+			<td>{{ bottle.shelf}}</td>
+			<td>{{ bottle.registered_date}}</td>
+		</tr>
+		{% endfor %}
+	</table>
+{% endblock %}
