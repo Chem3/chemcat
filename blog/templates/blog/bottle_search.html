@@ -1,12 +1,12 @@
 {% extends 'blog/base.html' %}
 {% block content %}
 	<table>
-		{% for bottle in bottles %}
+		{% for bottles in object_list %}
 		<tr>
-			<td><a href="{% url 'bottle_detail' pk=bottle.bottle_id %}">{{ bottle.product_name}}</a></td>
-			<td>{{ bottle.barcode}}</td>
-			<td>{{ bottle.shelf}}</td>
-			<td>{{ bottle.registered_date}}</td>
+			<td><a href="{% url 'bottle_detail' pk=bottles.bottle_id %}">{{ bottles.product_name}}</a></td>
+			<td>{{ bottles.barcode}}</td>
+			<td>{{ bottles.shelf}}</td>
+			<td>{{ bottles.registered_date}}</td>
 		</tr>
 		{% endfor %}
 	</table>

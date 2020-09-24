@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Bottles
 from django.utils import timezone
+from django.views.generic import TemplateView, ListView
+from django.db.models import Q
 
 # Create your views here.
 def bottle_list(request):
@@ -11,6 +13,14 @@ def bottle_detail(request, pk):
     bottle = get_object_or_404(Bottles, pk=pk)
     return render(request, 'blog/bottle_detail.html', {'bottle': bottle})
 
-def bottle_search(request):
-    form = SearchForm()
-    return render(request, 'blog/chemical_search.html', {'form': form})
+class SearchResultsView(ListView):
+    model = Bottles
+    template_name = 'blog/bottle_search.html'
+    
+    def get_queryset(self): # new
+        query = self.request.GET.get('q')
+        object_list = Bottles.objects.filter(
+            Q(product_name__icontains=query) |
+            Q(barcode__icontains=query)
+        )
+        return object_list

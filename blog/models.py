@@ -17,6 +17,8 @@ class Bottlefile(models.Model):
     
     class Meta:
         db_table = 'bottlefile'
+        verbose_name = "bottlefile"
+        verbose_name_plural = "bottlefiles"
         
         
 
@@ -32,7 +34,8 @@ class Cabinets(models.Model):
 
     class Meta:
         db_table = 'cabinets'
-        
+        verbose_name = "cabinet"
+        verbose_name_plural = "cabinets"
 
 class Locations(models.Model):
     name = models.CharField(max_length=32)
@@ -44,7 +47,8 @@ class Locations(models.Model):
     
     class Meta:
         db_table = 'locations'
-
+        verbose_name = "location"
+        verbose_name_plural = "locations"
 
 class Persons(models.Model):
     firstname = models.CharField(max_length=64)
@@ -58,7 +62,8 @@ class Persons(models.Model):
     
     class Meta:
         db_table = 'persons'
-
+        verbose_name = "person"
+        verbose_name_plural = "persons"
 
 class Producers(models.Model):
     name = models.CharField(max_length=128)
@@ -71,7 +76,8 @@ class Producers(models.Model):
 
     class Meta:
         db_table = 'producers'
-        
+        verbose_name = "producer"
+        verbose_name_plural = "producers"
 
 class Units(models.Model):
     short_name = models.CharField(max_length=32)
@@ -84,7 +90,8 @@ class Units(models.Model):
     
     class Meta:
         db_table = 'units'
-        
+        verbose_name = "unit"
+        verbose_name_plural = "units"
         
 class Properties(models.Model):
     property_name = models.CharField(max_length=32)
@@ -99,7 +106,8 @@ class Properties(models.Model):
     
     class Meta:
         db_table = 'properties'
-
+        verbose_name = "property"
+        verbose_name_plural = "properties"
 
 class Chemicals(models.Model):
     iupac_name = models.CharField(max_length=128, blank=True, null=True)
@@ -114,7 +122,8 @@ class Chemicals(models.Model):
     
     class Meta:
         db_table = 'chemicals'
-        
+        verbose_name = "chemical"
+        verbose_name_plural = "chemicals"        
 
 
 class Shelves(models.Model):
@@ -129,7 +138,8 @@ class Shelves(models.Model):
     
     class Meta:
         db_table = 'shelves'
-        
+        verbose_name = "shelf"
+        verbose_name_plural = "shelves"        
         
 class Bottles(models.Model):
     product_name = models.CharField(max_length=128, blank=True, null=True)
@@ -151,3 +161,5 @@ class Bottles(models.Model):
     
     class Meta:
         db_table = 'bottles'
+        verbose_name = "bottle"
+        verbose_name_plural = "bottles"        
