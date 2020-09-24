@@ -1,10 +1,20 @@
 {% extends 'blog/base.html' %}
 {% block content %}
-	<h1>{{ bottle.product_name}}</h1>
-	<p>{{ bottle.barcode}}</p>
-	<p>{{ bottle.shelf}}</p>
-	<p>{{ bottle.registered_date}}</p>
-	<p>Admin: [ <a href="/admin/blog/bottles/
-	{{ bottle.bottle_id}}
-	/change/">Change content</a> ]</p>
+	<h2 class="alert-success"> {{ bottle.product_name}} - {{ bottle.barcode}}</h2>
+	<table  class="table-striped table-bordered table-hover table-responsive">
+		<tr class="row"><th class="col-sm-4">Parameter</th>	<th class="col-sm-8">Data</th></tr>
+		<tr class="row"><td class="col-sm-4">Chemical</td>	<td class="col-sm-8">{{ bottle.chemical}}</td></tr>
+		<tr class="row"><td class="col-sm-4">Barcode id</td>	<td class="col-sm-8">{{ bottle.barcode}}</td></tr>
+		<tr class="row"><td class="col-sm-4">Shelf/Room</td>	<td class="col-sm-8">{{ bottle.shelf}}</td></tr>
+		<tr class="row"><td class="col-sm-4">Last seen</td>	<td class="col-sm-8">{{ bottle.registered_date}}</td></tr>
+		<tr class="row"><td class="col-sm-4">Amount</td>	<td class="col-sm-8">{{ bottle.amount}} {{ bottle.unit}}</td></tr>
+		<tr class="row"><td class="col-sm-4">Quality</td>	<td class="col-sm-8">{{ bottle.quality}}</td></tr>
+		<tr class="row"><td class="col-sm-4">Responsible</td>	<td class="col-sm-8">{{ bottle.responsible_person}}</td></tr>
+		<tr class="row"><td class="col-sm-4">User</td>	<td class="col-sm-8">{{ bottle.loaner}}</td></tr>
+		<tr class="row"><td class="col-sm-4">Producer</td>	<td class="col-sm-8">{{ bottle.producer}}</td></tr>
+		<tr class="row"><td class="col-sm-4">Comments</td>	<td class="col-sm-8">{{ bottle.comments}}</td></tr>
+		<tr class="row"><td class="col-sm-4">Admin</td>		<td class="col-sm-8">{{ bottle.bottle_id}} - [ <a href="/admin/blog/bottles/
+			{{ bottle.bottle_id}}
+			/change/">Change content</a> ]</td></tr>
+		</table>
 {% endblock %}

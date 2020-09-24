@@ -1,6 +1,6 @@
 {% extends 'blog/base.html' %}
 {% block content %}
-	<table>
+	<table class="table-striped table-bordered table-hover table-responsive">
 		{% for bottle in bottles %}
 		<tr>
 			<td><a href="{% url 'bottle_detail' pk=bottle.bottle_id %}">{{ bottle.product_name}}</a></td>
