@@ -4,13 +4,18 @@
 <head>
 	<title>Chemcat + Django</title>
 	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/chemcat.css' %}">
 </head>
 <body>
-	<div class=header></div>
-	<div class=body>
+	<div class="header">
+	{% include 'blog/header.html' %}
+	</div>
+	<div class="body">
 	{% block content %}
 	{% endblock %}
 	</div>
-	<div class=footer></div>
+	<div class="footer">
+	{% include 'blog/footer.html' %}
+	</div>
 </body>
 </html>
