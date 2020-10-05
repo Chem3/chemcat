@@ -6,6 +6,18 @@
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
+from django.contrib.auth.models import User
+
+class StorageUpdate(models.Model):
+    entry_id = models.AutoField(primary_key=True)
+    entry_date = models.DateField()
+    entry_content = models.TextField()
+    entry_author = models.ForeignKey(User, on_delete=models.CASCADE)
+    
+    class Meta:
+        db_table = 'Storage Update'
+        verbose_name = "Storage update"
+        verbose_name_plural = "Storage updates"
 
 class Bottlefile(models.Model):
     filepath = models.CharField(max_length=128)
