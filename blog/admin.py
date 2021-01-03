@@ -10,30 +10,32 @@ from .models import Shelves
 from .models import Bottles
 from .models import StorageUpdate
 from django import forms
-
-from .forms import StorageUpdateForm
+from .forms import StorageUpdateForm, ChemicalForm
 
 
 class BottlesAdmin(admin.ModelAdmin):
+    search_fields = ['product_name', 'barcode']
     list_display = ("product_name", "barcode", "shelf", "responsible_person", "registered_date", "bottle_id")
+    ordering = ('product_name', '-registered_date')
 
     class Meta:
         verbose_name_plural = "Bottles"
+        ordering = ('product_name', '-registered_date')
 
 
 class ChemicalsAdmin(admin.ModelAdmin):
+    search_fields = ['iupac_name', 'trivial_name', 'formula']
     list_display = ("iupac_name", "trivial_name", "formula", "property", "chemical_id")
+    ordering = ('iupac_name',)
+    form = ChemicalForm
 
     class Meta:
         verbose_name_plural = "Chemicals"
+        ordering = ('iupac_name',)
 
 
 class StorageUpdateAdmin(admin.ModelAdmin):
     form = StorageUpdateForm
-
-    def save_model(self, request, obj, form, change):
-        obj.user = request.user
-        super().save_model(request, obj, form, change)
 
 
 admin.site.register(StorageUpdate, StorageUpdateAdmin)
