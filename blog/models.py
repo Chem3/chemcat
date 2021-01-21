@@ -1,12 +1,14 @@
 # This is an auto-generated Django model module.
 # You'll have to do the following manually to clean this up:
 #   * Rearrange models' order
-#   * Make sure each model has one field with primary_key=True
+#   * Make sure each model has one field with pri
+#   mary_key=True
 #   * Make sure each ForeignKey has `on_delete` set to the desired behavior.
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 from django.contrib.auth.models import User
+
 
 class StorageUpdate(models.Model):
     entry_id = models.AutoField(primary_key=True)
@@ -19,6 +21,7 @@ class StorageUpdate(models.Model):
         verbose_name = "Storage update"
         verbose_name_plural = "Storage updates"
 
+
 class Bottlefile(models.Model):
     filepath = models.CharField(max_length=128)
     title = models.CharField(max_length=128)
@@ -26,13 +29,12 @@ class Bottlefile(models.Model):
 
     def __str__(self):
         return self.title
-    
+
     class Meta:
         db_table = 'bottlefile'
         verbose_name = "bottlefile"
         verbose_name_plural = "bottlefiles"
-        
-        
+
 
 class Cabinets(models.Model):
     shortname = models.CharField(max_length=32)
@@ -49,6 +51,7 @@ class Cabinets(models.Model):
         verbose_name = "cabinet"
         verbose_name_plural = "cabinets"
 
+
 class Locations(models.Model):
     name = models.CharField(max_length=32)
     comments = models.CharField(max_length=132)
@@ -61,6 +64,7 @@ class Locations(models.Model):
         db_table = 'locations'
         verbose_name = "location"
         verbose_name_plural = "locations"
+
 
 class Persons(models.Model):
     firstname = models.CharField(max_length=64)
@@ -77,6 +81,7 @@ class Persons(models.Model):
         verbose_name = "person"
         verbose_name_plural = "persons"
 
+
 class Producers(models.Model):
     name = models.CharField(max_length=128)
     url = models.CharField(max_length=128, blank=True, null=True)
@@ -91,6 +96,7 @@ class Producers(models.Model):
         verbose_name = "producer"
         verbose_name_plural = "producers"
 
+
 class Units(models.Model):
     short_name = models.CharField(max_length=32)
     long_name = models.CharField(max_length=64)
@@ -104,7 +110,8 @@ class Units(models.Model):
         db_table = 'units'
         verbose_name = "unit"
         verbose_name_plural = "units"
-        
+
+
 class Properties(models.Model):
     property_name = models.CharField(max_length=32)
     short_name = models.CharField(max_length=10)
@@ -121,13 +128,15 @@ class Properties(models.Model):
         verbose_name = "property"
         verbose_name_plural = "properties"
 
+
 class Chemicals(models.Model):
-    iupac_name = models.CharField(max_length=128, blank=True, null=True)
-    trivial_name = models.CharField(max_length=128)
-    cas = models.CharField(max_length=32)
-    formula = models.CharField(max_length=32, blank=True, null=True)
+    iupac_name = models.CharField(max_length=500, blank=True, null=True)
+    trivial_name = models.CharField(max_length=500)
+    cas = models.CharField(max_length=32, unique=True)
+    formula = models.CharField(max_length=32, blank=True, null=True, unique=True)
     property = models.ForeignKey('Properties', models.PROTECT)
     chemical_id = models.AutoField(primary_key=True)
+    override_iupac = models.BooleanField(blank=True, null=True)
    
     def __str__(self):
         return self.trivial_name #+ " | " + self.iupac_name
@@ -152,7 +161,8 @@ class Shelves(models.Model):
         db_table = 'shelves'
         verbose_name = "shelf"
         verbose_name_plural = "shelves"        
-        
+
+
 class Bottles(models.Model):
     product_name = models.CharField(max_length=128, blank=True, null=True)
     chemical = models.ForeignKey('Chemicals', models.PROTECT)
