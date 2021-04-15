@@ -2,6 +2,7 @@
   <component name="FileTypeManager" version="18">
     <extensionMap>
       <mapping pattern="Accuracy" type="AUTO_DETECTED" />
+      <mapping pattern="prediction.csv" type="AUTO_DETECTED" />
       <mapping ext="pem" type="PLAIN_TEXT" />
       <removed_mapping ext="txt" approved="true" type="PLAIN_TEXT" />
     </extensionMap>
