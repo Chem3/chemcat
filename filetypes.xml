@@ -3,7 +3,10 @@
     <extensionMap>
       <mapping pattern="Accuracy" type="AUTO_DETECTED" />
       <mapping pattern="prediction.csv" type="AUTO_DETECTED" />
+      <mapping ext="data-00000-of-00001" type="PLAIN_TEXT" />
+      <mapping ext="pb" type="PLAIN_TEXT" />
       <mapping ext="pem" type="PLAIN_TEXT" />
+      <mapping ext="index" type="PLAIN_TEXT" />
       <removed_mapping ext="txt" approved="true" type="PLAIN_TEXT" />
     </extensionMap>
   </component>
