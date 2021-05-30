@@ -7,7 +7,6 @@
       <mapping pattern="times" type="AUTO_DETECTED" />
       <mapping pattern="prediction.csv" type="AUTO_DETECTED" />
       <mapping ext="data-00000-of-00001" type="PLAIN_TEXT" />
-      <mapping ext="txt" type="PLAIN_TEXT" />
       <mapping ext="pb" type="PLAIN_TEXT" />
       <mapping ext="pem" type="PLAIN_TEXT" />
       <mapping ext="index" type="PLAIN_TEXT" />
